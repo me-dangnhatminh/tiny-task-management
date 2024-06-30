@@ -9,7 +9,7 @@ try {
 }
 
 const supportEmail = 'support.dev'
-const productionAddress = 'Kampuni.dev'
+const productionAddress = 'Minh.dev'
 
 interface IEmailFields {
   subject: string
@@ -67,12 +67,12 @@ export const sendVerifyEmail = ({
   const verificationLink = `${process.env.NEXT_PUBLIC_FE_GATEWAY}email-verification?token=${token}`
   return sendEmail({
     emails: [email],
-    subject: '[Kampuni] Invitation email for joining organization',
+    subject: '[Minh] Invitation email for joining organization',
     html: `
 
     <p>Dear <strong>${userName}</strong>,</p>
 
-    <p>Thank you for signing up with <strong>Kampuni</strong>! We're thrilled to have you as part of our community.</p>
+    <p>Thank you for signing up with <strong>Minh</strong>! We're thrilled to have you as part of our community.</p>
   
     <p>To complete your registration and ensure the security of your account, we need to verify your email address. Verifying your email will allow you to enjoy all the benefits and features of our platform.</p>
   
@@ -94,7 +94,7 @@ export const sendVerifyEmail = ({
     <p>We're excited to have you on board, and we can't wait to provide you with a fantastic experience!</p>
   
     <p>Best regards,<br>
-      Kampuni<br>
+      Minh<br>
       <a href=${productionAddress}>${productionAddress}</a>
     </p>
 `

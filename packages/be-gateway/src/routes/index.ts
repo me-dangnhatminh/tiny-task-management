@@ -34,23 +34,29 @@ import ProjectSetting from './project/setting.controller'
 import TaskChecklistController from './task/checklist.controller'
 import ReportController from './report'
 import { createModuleLog } from '../lib/log'
+import { LoadTestController } from './test/loadtest.controller'
 
 const router = Router()
 const logger = createModuleLog('Request')
 
 router.use((req, res, next) => {
-  logger.info(req.url, {
-    method: req.method,
-    url: req.url,
-    path: req.path
-  })
-  console.log('\x1b[0m', `🥝 ${req.method}: ${req.url}`, '\x1b[90m')
+  try {
+    logger.info(req.url, {
+      method: req.method,
+      url: req.url,
+      path: req.path
+    })
+    console.log('\x1b[0m', `🥝 ${req.method}: ${req.url}`, '\x1b[90m')
+  } catch (error) {
+    console.log()
+  }
   next()
 })
 
 router.use(
   AppRoutes([
     TestController,
+    LoadTestController,
     ProjectController,
     ActivityRouter,
     CommentRouer,

@@ -24,7 +24,7 @@ import { HiOutlineInformationCircle } from 'react-icons/hi2'
 
 export default function MeetingContainer() {
   // TODO: get user input for room and name
-  const { roomId, orgID } = useParams()
+  const { roomId, orgName } = useParams()
   const { push } = useRouter()
   const { user } = useUser()
   const [token, setToken] = useState('')
@@ -45,7 +45,7 @@ export default function MeetingContainer() {
     <div className='meeting-room fixed top-0 left-0 z-10 w-full h-full'>
       <LiveKitRoom
         onDisconnected={() => {
-          push(`/${orgID}/meeting`)
+          push(`/${orgName}/meeting`)
         }}
         video={true}
         audio={true}
@@ -79,11 +79,11 @@ export default function MeetingContainer() {
 }
 
 function MeetingRoomInfo() {
-  const { roomId, orgID } = useParams()
+  const { roomId, orgName } = useParams()
   const [visible, setVisible] = useState(true)
 
   const getLink = () => {
-    return `${window.location.protocol}//${window.location.host}/${orgID}/meeting/${roomId}`
+    return `${window.location.protocol}//${window.location.host}/${orgName}/meeting/${roomId}`
   }
 
   return <div className={`fixed bottom-5 left-5 bg-white rounded-md shadow-lg p-4 text-gray-600 text-sm`}>
